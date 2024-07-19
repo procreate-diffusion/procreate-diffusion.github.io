@@ -45,8 +45,6 @@
   <script src="static/js/index.js"></script>
 </head>
 <body>
-
-
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -55,18 +53,20 @@
             <h1 class="title is-1 publication-title">ProCreate: Don't Reproduce! <br/> Propulsive Energy Diffusion for <br/> Creative Generation</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                    <a href="https://jacklu-me.com" target="_blank">Jack Lu</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://rteehas.github.io/" target="_blank">Ryan Teehan</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://renmengye.github.io" target="_blank">Mengye Ren</a>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="author-block">New York University<br>ECCV 2024</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
 
                   <div class="column has-text-centered">
@@ -83,19 +83,19 @@
                     </span>
 
                     <!-- Supplementary PDF link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
                       </span>
-                      <span>Supplementary</span>
+                      <span>Supplementary</span> -->
                     </a>
                   </span>
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/Agentic-Learning-AI-Lab/procreate-diffusion-public" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -105,14 +105,14 @@
                 </span>
 
                 <!-- ArXiv abstract Link -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
-                </a>
+                </a> -->
               </span>
             </div>
           </div>
@@ -127,13 +127,16 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
+      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
         <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.
+        <!-- <source src="static/videos/banner_video.mp4"
+        type="video/mp4"> -->
+      <!-- </video> -->
+      <p style="text-align: center;">
+        <img src="static/images/teaser_figure.png" alt="teaser figure" width="900" height=auto>
+      </p>
+      <h2 class="subtitle has-text-centered" style="margin-top:0.5cm;">
+        After fine-tuning a diffusion model on each category of our few-shot dataset <b>FSCG-8</b>, <b>ProCreate</b> can significantly improve the diversity and creativity of generations while retaining high image quality and prompt fidelity.
       </h2>
     </div>
   </div>
@@ -148,7 +151,15 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            In this paper, we propose ProCreate, a simple and easy-to-implement method to improve
+            sample diversity and creativity of diffusion-based image generative models and to prevent
+            training data reproduction. ProCreate operates on a set of reference images and actively
+            propels the generated image embedding away from the reference embeddings during the
+            generation process. We propose FSCG-8 (Few-Shot Creative Generation 8), a few-shot creative
+            generation dataset on eight different categories---encompassing different concepts, styles,
+            and settings---in which ProCreate achieves the highest sample diversity and fidelity.
+            Furthermore, we show that ProCreate is effective at preventing replicating training data
+            in a large-scale evaluation using training text prompts.
           </p>
         </div>
       </div>
@@ -156,6 +167,52 @@
   </div>
 </section>
 <!-- End paper abstract -->
+
+<!-- Method-->
+<section class="hero method">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
+        <!-- Your video here -->
+        <!-- <source src="static/videos/banner_video.mp4"
+        type="video/mp4"> -->
+      <!-- </video> -->
+      <!-- <embed src="file_name.pdf" width="800px" height="2100px" /> -->
+      <p style="text-align: center;">
+        <img src="static/images/main_v5.png" alt="method figure" width="900" height=auto>
+      </p>
+      <h2 class="subtitle has-text-centered" style="margin-top:0.0cm;">
+        Overview of our approach. At each denoising step, ProCreate applies gradient
+        guidance that maximizes the distances between the generated clean image and the
+        reference images in the embedding space of a similarity embedding network. In the
+        embedding space, the noisy image is propelled away from its closest reference image.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End method -->
+
+<!-- -->
+<section class="hero dataset">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
+        <!-- Your video here -->
+        <!-- <source src="static/videos/banner_video.mp4"
+        type="video/mp4"> -->
+      <!-- </video> -->
+      <!-- <embed src="file_name.pdf" width="800px" height="2100px" /> -->
+      <p style="text-align: center;">
+        <img src="static/images/datasets_figure.png" alt="method figure" width="1000" height=auto>
+      </p>
+      <h2 class="subtitle has-text-centered" style="margin-top:0.0cm;">
+        Samples of the FSCG-8 dataset. We provide 10 samples from each of the 8
+        categories. For each category, an example caption for its top left image is provided.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End method -->
 
 
 <!-- Image carousel -->
@@ -260,7 +317,7 @@
 
 
 <!-- Paper poster -->
-<section class="hero is-small is-light">
+<!-- <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
       <h2 class="title">Poster</h2>
@@ -270,7 +327,7 @@
 
       </div>
     </div>
-  </section>
+  </section> -->
 <!--End paper poster -->
 
 
@@ -278,7 +335,7 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>coming soon</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
