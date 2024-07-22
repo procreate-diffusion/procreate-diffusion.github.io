@@ -25,7 +25,7 @@
 
 
   <title>ProCreate-Diffusion</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -122,7 +122,6 @@
   </div>
 </section>
 
-
 <!-- Teaser video-->
 <section class="hero teaser">
   <div class="container is-max-desktop">
@@ -168,174 +167,158 @@
 </section>
 <!-- End paper abstract -->
 
-<!-- Method-->
+<!-- Method -->
 <section class="hero method">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
-        <!-- Your video here -->
-        <!-- <source src="static/videos/banner_video.mp4"
-        type="video/mp4"> -->
-      <!-- </video> -->
-      <!-- <embed src="file_name.pdf" width="800px" height="2100px" /> -->
-      <p style="text-align: center;">
-        <img src="static/images/main_v5.png" alt="method figure" width="900" height=auto>
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3">Our Method</h2>
+      <p>
+        At each denoising step of a pre-trained diffusion model,
+        <b>ProCreate</b> applies gradient guidance that maximizes the distances between the
+        generated clean image and the reference images in the embedding space of a
+        similarity embedding network. In the embedding space, the noisy image is propelled
+        away from its closest reference image. We use <a href="https://arxiv.org/abs/2306.09344" target="_blank">DreamSim</a>
+        as our choice of similarity embedding network.
       </p>
-      <h2 class="subtitle has-text-centered" style="margin-top:0.0cm;">
-        Overview of our approach. At each denoising step, ProCreate applies gradient
-        guidance that maximizes the distances between the generated clean image and the
-        reference images in the embedding space of a similarity embedding network. In the
-        embedding space, the noisy image is propelled away from its closest reference image.
-      </h2>
+      <br>
+      <p style="text-align: center;">
+        <img src="static/images/main_v5.png" alt="method figure" width="1000" height=auto>
+      </p>
     </div>
   </div>
 </section>
-<!-- End method -->
 
-<!-- -->
-<section class="hero dataset">
+<!-- Few-Shot Creative Generation -->
+<section class="hero">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- <video poster="" id="tree" autoplay controls muted loop height="100%"> -->
-        <!-- Your video here -->
-        <!-- <source src="static/videos/banner_video.mp4"
-        type="video/mp4"> -->
-      <!-- </video> -->
-      <!-- <embed src="file_name.pdf" width="800px" height="2100px" /> -->
-      <p style="text-align: center;">
-        <img src="static/images/datasets_figure.png" alt="method figure" width="1000" height=auto>
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3">Application 1: Few-Shot Creative Generation</h2>
+      <p>
+        Given a diffusion model checkpoint that is fine-tuned on limited data, our goal
+        is to improve the diversity of its generated samples while maintaining sample quality
+        and conceptual similarity to the reference set. In this section, we collect dataset <b>FSCG-8</b>,
+        fine-tune a Stable Diffusion checkpoint on each category of caption-image pairs, and compare
+        the samples generated from
+        <a href="https://arxiv.org/abs/2010.02502" target="_blank">DDIM</a>,
+        <a href="https://arxiv.org/abs/2310.17347" target="_blank">CADS</a>,
+        and <b>ProCreate</b> sampling methods.
       </p>
-      <h2 class="subtitle has-text-centered" style="margin-top:0.0cm;">
-        Samples of the FSCG-8 dataset. We provide 10 samples from each of the 8
-        categories. For each category, an example caption for its top left image is provided.
-      </h2>
+      <br>
+      <h2 class="title is-4">Our Dataset: Few-Shot Creative Generation 8</h2>
+      <p>
+        We curate a new dataset that contains 8 categories of images with 50 caption-image pairs in each. Each category
+        contains images that share some properties, including the style of <i>Amedeo Modigliani’s paintings</i>,
+        the abstract design and texture of <i>Burberry’s apparel</i>, and the twisting geometric properties of <i>Frank Gehry’s architecture</i>.
+        We provide 10 samples from each category. For each category, an example caption for its top left image is provided.
+      </p>
+      <br>
+      <p style="text-align: center;">
+        <img src="static/images/datasets_figure.png" alt="dataset figure" width="1000" height=auto>
+      </p>
+      <br>
+      <h2 class="title is-4">Results</h2>
+      <p>
+        We show the qualitative comparison between
+        <a href="https://arxiv.org/abs/2010.02502" target="_blank">DDIM</a>,
+        <a href="https://arxiv.org/abs/2310.17347" target="_blank">CADS</a>,
+        and <b>ProCreate</b> for few-shot
+        creative generation on FSCG-8 with standard fine-tuning. For each sampling method,
+        we show two prompts and four generated samples for each prompt. In addition, we
+        match each sample from <b>ProCreate</b> with its closest training image based on the
+        <a href="https://arxiv.org/abs/2202.10261" target="_blank">SSCD</a> score between the matched pair.
+        We observe that compared to DDIM and CADS, <b>ProCreate</b> generates much more diverse images
+        that balance between including shared properties in the training images and following the
+        prompt guidance. Furthermore, the Top-1 <a href="https://arxiv.org/abs/2202.10261" target="_blank">SSCD</a>
+        training columns show that <b>ProCreate</b> does not replicate its training images.
+      </p>
+      <br>
+      <p style="text-align: center;">
+        <img src="static/images/train10_qualitative_updated.png" alt="fscg qualitative figure" width="1000" height=auto>
+      </p>
     </div>
   </div>
 </section>
-<!-- End method -->
 
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
+<!-- Training Data Replication Prevention -->
+<section class="hero">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3">Application 2: Training Data Replication Prevention</h2>
+      <p>
+        <a href="https://arxiv.org/abs/2212.03860" target="_blank">Recent studies</a> show
+        that even large-scale diffusion models like Stable Diffusion are prone to
+        replicating data inside its training set, raising privacy and copyright concerns.
+        We sample from a frozen-pretrained Stable Diffusion checkpoint on the
+        <a href="https://arxiv.org/abs/2210.08402" target="_blank">LAION</a>
+        dataset and use <b>ProCreate</b> to guide samples away from the training data.
+        To scale the compute within our limitation, we set the reference images to a smaller
+        LAION Aesthetics v2 6+ dataset with 12M caption-image pairs, a subset of LAION12M.
+      </p>
+      <br>
+      <p>
+        We show examples of when the pre-trained Stable Diffusion model generates images with
+        <a href="https://arxiv.org/abs/2010.02502" target="_blank">DDIM</a>
+        that are both perceptually similar to their matched images in LAION12M and high in
+        Top-1 <a href="https://arxiv.org/abs/2202.10261" target="_blank">SSCD</a> score.
+        In contrast, <b>ProCreate</b> significantly lowers the perceptual similarity and
+        Top-1 SSCD scores in all examples, showing that their generated samples are
+        sufficiently different in SSCD score (&lt0.4) from all other images in LAION12M.
+      </p>
+      <br>
+      <p style="text-align: center;">
+        <img src="static/images/laion12m_replication_final.png" alt="laion12m qualitative figure" width="1000" height=auto>
+      </p>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- End image carousel -->
 
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
+<!-- Video -->
+<section class="hero video">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
       <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
+      <video controls>
+        <source src="static/videos/Video.mp4"
+        type="video/mp4">
+        Your browser may not support this video.
+      </video>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
+<!-- End Dataset -->
 
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
+<!-- Societal Impact -->
+<section class="hero">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
+      <h2 class="title is-3">Broader Impact</h2>
+      <p>
+        This research presents significant broader impacts. It offers content
+        creators and designers the tools to enhance AI-assisted design with a smaller
+        risk of replicating reference images, or private/copyrighted training images.
+        Although the primary implications are beneficial, there exists a potential for this
+        technology to facilitate the design of counterfeit products. Addressing the ethical
+        use and regulatory oversight of such advancements warrants further discussion
+        in future works.
+      </p>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
-
 
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>coming soon</code></pre>
+<section class="hero">
+    <div class="container is-max-desktop" style="padding-top: 3rem; padding-bottom: 2rem;">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre><code>
+@inproceedings{lu2024procreate,
+               title={ProCreate: Don't Reproduce! Propulsive Energy Diffusion for Creative Generation},
+               author={Jack Lu and
+                       Ryan Teehan and
+                       Mengye Ren},
+               booktitle={Computer Vision - {ECCV} 2024 - 18th European Conference, Milano,
+                          Italy, September 29 - October 27, 2024},
+               year={2024},
+}</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
