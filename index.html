@@ -131,11 +131,14 @@
         <!-- <source src="static/videos/banner_video.mp4"
         type="video/mp4"> -->
       <!-- </video> -->
-      <p style="text-align: center;">
+      <!-- <p style="text-align: center;">
         <img src="static/images/teaser_figure.png" alt="teaser figure" width="900" height=auto>
+      </p> -->
+      <p style="text-align: center;"></p>
+        <img src="static/images/teaser.gif" alt="teaser gif">
       </p>
-      <h2 class="subtitle has-text-centered" style="margin-top:0.5cm;">
-        After fine-tuning a diffusion model on each category of our few-shot dataset FSCG-8, ProCreate can significantly improve the diversity and creativity of generations while retaining high image quality and prompt fidelity.
+      <h2 class="subtitle has-text-centered is-size-6" style="margin-top:0.5cm;">
+        After fine-tuning diffusion models on categories of our few-shot dataset FSCG-8, ProCreate can significantly improve the diversity and creativity of generations while retaining high image quality and prompt fidelity.
       </h2>
     </div>
   </div>
@@ -171,14 +174,11 @@
 <section class="hero method">
   <div class="container is-max-desktop">
     <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
-      <h2 class="title is-3">Our Method</h2>
+      <h2 class="title is-3" style="margin-bottom: 1rem;">Our Method</h2>
       <p>
         At each denoising step of a pre-trained diffusion model,
-        ProCreate applies gradient guidance that maximizes the distances between the
-        generated clean image and the reference images in the embedding space of a
-        similarity embedding network. In the embedding space, the noisy image is propelled
-        away from its closest reference image. We use <a href="https://arxiv.org/abs/2306.09344" target="_blank">DreamSim</a>
-        as our choice of similarity embedding network.
+        ProCreate applies propulsive guidance that maximizes the distances between the
+        generated clean image and the reference images.
       </p>
       <br>
       <p style="text-align: center;">
@@ -194,42 +194,32 @@
     <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
       <h2 class="title is-3">Application 1: Few-Shot Creative Generation</h2>
       <p>
-        Given a diffusion model checkpoint that is fine-tuned on limited data, our goal
-        is to improve the diversity of its generated samples while maintaining sample quality
-        and conceptual similarity to the reference set. In this section, we collect dataset FSCG-8,
-        fine-tune a Stable Diffusion checkpoint on each category of caption-image pairs, and compare
+        We collect dataset FSCG-8, fine-tune a Stable Diffusion checkpoint on each category of image-caption pairs, and compare
         the samples generated from
         <a href="https://arxiv.org/abs/2010.02502" target="_blank">DDIM</a>,
         <a href="https://arxiv.org/abs/2310.17347" target="_blank">CADS</a>,
-        and ProCreate sampling methods.
+        and ProCreate.
       </p>
       <br>
-      <h2 class="title is-4">Our Dataset: Few-Shot Creative Generation 8</h2>
+      <h2 class="title is-4" style="margin-bottom: 1rem;">Our Dataset: Few-Shot Creative Generation 8</h2>
       <p>
-        We curate a new dataset that contains 8 categories of images with 50 caption-image pairs in each. Each category
-        contains images that share some properties, including the style of <i>Amedeo Modigliani’s paintings</i>,
-        the abstract design and texture of <i>Burberry’s apparel</i>, and the twisting geometric properties of <i>Frank Gehry’s architecture</i>.
-        We provide 10 samples from each category. For each category, an example caption for its top left image is provided.
+        We curate a dataset that contains 8 categories with 50 image-caption pairs in each. Each category
+        contains images that share properties like style, texture, and shape.
       </p>
       <br>
       <p style="text-align: center;">
-        <img src="static/images/datasets_figure.png" alt="dataset figure" width="1000" height=auto>
+        <img src="static/images/datasets_figure_cropped.png" alt="dataset figure" width="1000" height=auto>
       </p>
       <br>
-      <h2 class="title is-4">Results</h2>
+      <h2 class="title is-4" style="margin-bottom: 1rem;">Results</h2>
       <p>
         We show the qualitative comparison between
         <a href="https://arxiv.org/abs/2010.02502" target="_blank">DDIM</a>,
         <a href="https://arxiv.org/abs/2310.17347" target="_blank">CADS</a>,
         and ProCreate for few-shot
         creative generation on FSCG-8 with standard fine-tuning. For each sampling method,
-        we show two prompts and four generated samples for each prompt. In addition, we
-        match each sample from ProCreate with its closest training image based on the
-        <a href="https://arxiv.org/abs/2202.10261" target="_blank">SSCD</a> score between the matched pair.
-        We observe that compared to DDIM and CADS, ProCreate generates much more diverse images
-        that balance between including shared properties in the training images and following the
-        prompt guidance. Furthermore, the Top-1 <a href="https://arxiv.org/abs/2202.10261" target="_blank">SSCD</a>
-        training columns show that ProCreate does not replicate its training images.
+        we show two prompts and four generated samples for each prompt. We also
+        match each ProCreate sample with its most similar training image.
       </p>
       <br>
       <p style="text-align: center;">
@@ -246,23 +236,11 @@
       <h2 class="title is-3">Application 2: Training Data Replication Prevention</h2>
       <p>
         <a href="https://arxiv.org/abs/2212.03860" target="_blank">Recent studies</a> show
-        that even large-scale diffusion models like Stable Diffusion are prone to
-        replicating data inside its training set, raising privacy and copyright concerns.
-        We sample from a frozen-pretrained Stable Diffusion checkpoint on the
-        <a href="https://arxiv.org/abs/2210.08402" target="_blank">LAION</a>
-        dataset and use ProCreate to guide samples away from the training data.
-        To scale the compute within our limitation, we set the reference images to a smaller
-        LAION Aesthetics v2 6+ dataset with 12M caption-image pairs, a subset of LAION12M.
-      </p>
-      <br>
-      <p>
-        We show examples of when the pre-trained Stable Diffusion model generates images with
-        <a href="https://arxiv.org/abs/2010.02502" target="_blank">DDIM</a>
-        that are both perceptually similar to their matched images in LAION12M and high in
-        Top-1 <a href="https://arxiv.org/abs/2202.10261" target="_blank">SSCD</a> score.
-        In contrast, ProCreate significantly lowers the perceptual similarity and
-        Top-1 SSCD scores in all examples, showing that their generated samples are
-        sufficiently different in SSCD score (&lt0.4) from all other images in LAION12M.
+        that large-scale models like Stable Diffusion are prone to
+        replicating their training data, raising privacy and copyright concerns.
+        We sample from Stable Diffusion with <a href="https://arxiv.org/abs/2210.08402" target="_blank">LAION</a>
+        captions and show that using ProCreate to guide samples away from the
+        <a href="https://arxiv.org/abs/2210.08402" target="_blank">LAION</a> images significantly reduces replication.
       </p>
       <br>
       <p style="text-align: center;">
@@ -278,7 +256,7 @@
     <div class="hero-body" style="padding-top: 3rem; padding-bottom: 0rem;">
       <h2 class="title is-3">Video Presentation</h2>
       <video controls>
-        <source src="static/videos/Video.mp4"
+        <source src="static/videos/ProCreate_no_border.mp4"
         type="video/mp4">
         Your browser may not support this video.
       </video>
